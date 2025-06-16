@@ -3,86 +3,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NYC Fun Fact Slot Machine</title>
+    <title>American Fun Fact Slot Machine</title>
     <style>
         body {
             background: linear-gradient(to bottom, #002868, #ffffff, #bf0a30);
-            font-family: 'Arial Black', Gadget, sans-serif;
-            color: #fff;
+            font-family: 'Arial', sans-serif;
+            color: #222;
             text-align: center;
-            padding: 50px;
+            padding: 40px;
         }
         h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
+            color: #fff;
             text-shadow: 2px 2px #000;
         }
         .slot-machine {
-            background: #000;
-            border: 10px solid #fff;
+            background: #fff;
+            border: 5px solid #002868;
             border-radius: 20px;
             padding: 30px;
-            width: 80%;
+            max-width: 600px;
             margin: 0 auto;
-            box-shadow: 0 0 20px #000;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
         .reel {
-            font-size: 2em;
-            background: #fff;
-            color: #000;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 10px;
-            min-height: 100px;
+            font-size: 1.2em;
+            margin: 20px 0;
+            min-height: 150px;
         }
         button {
-            font-size: 1.5em;
-            padding: 15px 30px;
             background-color: #bf0a30;
-            color: #fff;
+            color: white;
             border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
             border-radius: 10px;
             cursor: pointer;
-            margin-top: 20px;
         }
         button:hover {
             background-color: #a00;
         }
-        .stars {
-            font-size: 2em;
-            margin: 20px 0;
+        a {
+            color: #002868;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <h1>🎰 NYC Fun Fact Slot Machine 🇺🇸</h1>
-    <div class="stars">⭐️⭐️⭐️⭐️⭐️</div>
+    <h1>🎰 American Fun Fact Slot Machine 🇺🇸</h1>
     <div class="slot-machine">
-        <div id="reel" class="reel">Press SPIN to reveal a fun fact!</div>
-        <button onclick="spin()">🎲 SPIN 🎲</button>
+        <div class="reel" id="reel">
+            Click SPIN to discover a fun thing to do!
+        </div>
+        <button onclick="spin()">SPIN</button>
     </div>
 
     <script>
-        const facts = [
-            "🎧 Dream House (275 Church St, Tribeca): A surreal sound and light installation by La Monte Young and Marian Zazeela. Visitors remove their shoes and enter a meditative space filled with a continuous drone and pink light.",
-            "🧱 Berlin Wall Fragment (520 Madison Ave): A real piece of the Berlin Wall stands in a Midtown office lobby. Most passersby don’t even notice this powerful Cold War relic.",
-            "🧬 Roosevelt Island Smallpox Hospital: The haunting Renwick Ruin is a Gothic-style abandoned hospital from the 1850s. It’s landmarked and visible from the Roosevelt Island tram.",
-            "🌀 Whispering Gallery (Grand Central Terminal): Near the Oyster Bar, stand at opposite corners and whisper—your voice travels across the domed ceiling!",
-            "🧪 The Earth Room (141 Wooster St, SoHo): A room filled with 280,000 pounds of dirt. This permanent installation by Walter De Maria has been quietly baffling visitors since 1980.",
-            "🧠 Hess Triangle (7th Ave & Christopher St): NYC’s smallest private property—just 500 square inches—created in protest against eminent domain. It still bears a plaque of defiance.",
-            "🍦 Museum of Ice Cream (558 Broadway, SoHo): A colorful, interactive museum where you can swim in a pool of sprinkles and eat unlimited ice cream.",
-            "🧛 Vampire of Brooklyn (Williamsburg): In the 1800s, John Bell was exhumed after being suspected of vampirism. His story lives on in local folklore.",
-            "🧊 Oldest Manhole Covers: Some NYC manhole covers date back to the 1860s and are still in use today—look down while walking in Lower Manhattan!",
-            "🎭 Theater Alley (behind the Nederlander Theatre): One of the last remaining alleys in the Theater District, once used by actors to sneak between shows."
-        ];
+        const facts = [{"title": "Explore Roosevelt Island Tramway", "description": "Take a scenic ride over the East River for just $2.90 with a MetroCard. Great views of Manhattan!", "location": "Roosevelt Island, NYC", "price": "$2.90", "link": "https://rioc.ny.gov/302/Tram"}, {"title": "Visit the Renwick Ruin", "description": "Explore the hauntingly beautiful remains of a 19th-century smallpox hospital on Roosevelt Island.", "location": "Roosevelt Island, NYC", "price": "Free", "link": "https://en.wikipedia.org/wiki/Renwick_Smallpox_Hospital"}, {"title": "Attend the Village Halloween Parade", "description": "NYC's iconic Halloween event with costumes, puppets, and music. Takes place on October 31, but pre-events start the week before.", "location": "Greenwich Village, NYC", "price": "Free to watch", "link": "https://halloween-nyc.com/"}, {"title": "Try a Philly Cheesesteak", "description": "Grab an authentic cheesesteak from Pat\u2019s or Geno\u2019s in South Philly. A must-try American street food.", "location": "Philadelphia, PA", "price": "$10\u2013$15", "link": "https://www.visitphilly.com/things-to-do/food-drink/pats-genos/"}, {"title": "Tour the Library of Congress", "description": "Explore the largest library in the world with stunning architecture. Free guided tours available.", "location": "Washington, DC", "price": "Free", "link": "https://www.loc.gov/visit/"}];
 
         function spin() {
             const reel = document.getElementById("reel");
-            reel.innerHTML = "🎰 Spinning...";
-            setTimeout(() => {
-                const randomFact = facts[Math.floor(Math.random() * facts.length)];
-                reel.innerHTML = randomFact;
-            }, 1000);
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const fact = facts[randomIndex];
+
+            reel.innerHTML = `
+                <h2>${fact.title}</h2>
+                <p>${fact.description}</p>
+                <p><strong>📍 Location:</strong> ${fact.location}</p>
+                <p><strong>💵 Price:</strong> ${fact.price}</p>
+                <p><a href="${fact.link}" target="_blank">🔗 More Info</a></p>
+            `;
         }
     </script>
 </body>
