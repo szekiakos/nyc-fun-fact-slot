@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NYC Fun Fact Slot Machine</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #002868, #ffffff, #bf0a30);
+            font-family: 'Arial Black', Gadget, sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #000;
+        }
+        .slot-machine {
+            background: #000;
+            border: 10px solid #fff;
+            border-radius: 20px;
+            padding: 30px;
+            width: 80%;
+            margin: 0 auto;
+            box-shadow: 0 0 20px #000;
+        }
+        .reel {
+            font-size: 2em;
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            min-height: 100px;
+        }
+        button {
+            font-size: 1.5em;
+            padding: 15px 30px;
+            background-color: #bf0a30;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #a00;
+        }
+        .stars {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎰 NYC Fun Fact Slot Machine 🇺🇸</h1>
+    <div class="stars">⭐️⭐️⭐️⭐️⭐️</div>
+    <div class="slot-machine">
+        <div id="reel" class="reel">Press SPIN to reveal a fun fact!</div>
+        <button onclick="spin()">🎲 SPIN 🎲</button>
+    </div>
+
+    <script>
+        const facts = [
+            "🎧 Dream House (275 Church St, Tribeca): A surreal sound and light installation by La Monte Young and Marian Zazeela. Visitors remove their shoes and enter a meditative space filled with a continuous drone and pink light.",
+            "🧱 Berlin Wall Fragment (520 Madison Ave): A real piece of the Berlin Wall stands in a Midtown office lobby. Most passersby don’t even notice this powerful Cold War relic.",
+            "🧬 Roosevelt Island Smallpox Hospital: The haunting Renwick Ruin is a Gothic-style abandoned hospital from the 1850s. It’s landmarked and visible from the Roosevelt Island tram.",
+            "🌀 Whispering Gallery (Grand Central Terminal): Near the Oyster Bar, stand at opposite corners and whisper—your voice travels across the domed ceiling!",
+            "🧪 The Earth Room (141 Wooster St, SoHo): A room filled with 280,000 pounds of dirt. This permanent installation by Walter De Maria has been quietly baffling visitors since 1980.",
+            "🧠 Hess Triangle (7th Ave & Christopher St): NYC’s smallest private property—just 500 square inches—created in protest against eminent domain. It still bears a plaque of defiance.",
+            "🍦 Museum of Ice Cream (558 Broadway, SoHo): A colorful, interactive museum where you can swim in a pool of sprinkles and eat unlimited ice cream.",
+            "🧛 Vampire of Brooklyn (Williamsburg): In the 1800s, John Bell was exhumed after being suspected of vampirism. His story lives on in local folklore.",
+            "🧊 Oldest Manhole Covers: Some NYC manhole covers date back to the 1860s and are still in use today—look down while walking in Lower Manhattan!",
+            "🎭 Theater Alley (behind the Nederlander Theatre): One of the last remaining alleys in the Theater District, once used by actors to sneak between shows."
+        ];
+
+        function spin() {
+            const reel = document.getElementById("reel");
+            reel.innerHTML = "🎰 Spinning...";
+            setTimeout(() => {
+                const randomFact = facts[Math.floor(Math.random() * facts.length)];
+                reel.innerHTML = randomFact;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
